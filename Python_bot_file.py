@@ -32,9 +32,12 @@ def run_bot(r, comments_replied_to, WholeWord):
                 "I'm bound to him as surely as a stave is bound to the barrel. But I can't see if he'll ever love me in return. And I am not the only one.",
                 "You have me, looby.",
                 "Burn you, Rand al'Thor!",
+                "Woolheaded sheepherder!",
+                "*Boink*",
                 "Men are strange. I think it has something to do with the hair on their chins.",
                 "I want to get drunk as a drowned mouse, and fast!",
-                "Fall in love with a man, and you end up doing laundry, even if it does belong to another man."]
+                "Fall in love with a man, and you end up doing laundry, even if it does belong to another man.",
+                "Rand, don't look at me like that. I am on your side, if it comes to sides. It might; a little. They think I'll tell them what you say. I won't, Rand. They just want to know how to deal with you, what to expect, but I'll not tell one word you don't want me to, and if you ask me to lie, I will. They do not know about my viewings. Those are yours, Rand. You know I will read anyone you say, including Merana and the rest."]
 
             comment.reply(random.choice(rand_quotes)) #Chooses a random quote
 
@@ -96,6 +99,38 @@ def run_bot(r, comments_replied_to, WholeWord):
                 ]
 
             comment.reply(random.choice(egwene_quotes)) #Chooses a random quote
+
+            comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
+
+            with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
+                f.write(comment.id + "\n")
+
+
+            print("Comment found!")
+
+        elif WholeWord("gawyn")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+            gawyn_quotes = [
+                "Gawyn, you know me. You can't think I would help the Black Ajah. Gawyn, Elayne supports her and everything she's done. Your own sister, Gawyn. Egwene believe in her too, Gawyn. I swear it, Gawyn. Egwene believes.",
+                "I fear I know little of books my Lord Gawyn. I always mean to read one – I do. But there is so little time. Why, just fixing my hair properly takes hours. Do you think it is pretty?",
+                ]
+
+            comment.reply(random.choice(gawyn_quotes)) #Chooses a random quote
+
+            comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
+
+            with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
+                f.write(comment.id + "\n")
+
+
+            print("Comment found!")
+
+        elif WholeWord("aviendha")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+            aviendha_quotes = [
+                "I don’t know what anybody’s toes have to do with anything, or feet either, but I’m not going anywhere until you talk to them, Rand!",
+                "Could we go find that oosquai, now? I want to get drunk as a drowned mouse, and fast!",
+                ]
+
+            comment.reply(random.choice(aviendha_quotes)) #Chooses a random quote
 
             comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
 
