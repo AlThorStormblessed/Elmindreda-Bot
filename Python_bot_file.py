@@ -25,7 +25,7 @@ def run_bot(r, comments_replied_to, WholeWord):
 
 
     for comment in r.subreddit('Elmindreda_bot').comments(limit = 25):
-
+#rand
         if WholeWord("rand")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
             rand_quotes = [
                 "I like older men. I like men with education, and wit. I have no interest in farms, or sheep, or shepherds. But then, you aren't a shepherd, are you? Not anymore. Light, why did the Pattern have to catch me up with you? Why couldn't I have something safe and simple, like being shipwrecked with no food and a dozen hungry Aielmen?",
@@ -48,7 +48,22 @@ def run_bot(r, comments_replied_to, WholeWord):
 
 
             print("Comment found!")
+#special case of all 3 boys being mentioned at once.
+         elif WholeWord("rand")(comment.body) and WholeWord("perrin")(comment.body) and WholeWord("mat")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+            three_amigos_quotes = [
+                "Sparks swirling around you, thousands of them, and a big shadow, darker than midnight. The sparks are trying to fill the shadow, and the shadow is trying to swallow the sparks. You are all tied together in something dangerous."]
 
+            comment.reply(random.choice(three_amigos_quotes)) #Chooses a random quote from above list
+
+            comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
+
+            with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
+                f.write(comment.id + "\n")
+
+
+            print("Comment found!")
+
+#thom            
         elif WholeWord("thom")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
             thom_quotes = [
                 "Go juggle something, Thom",
@@ -92,22 +107,7 @@ def run_bot(r, comments_replied_to, WholeWord):
 
 
             print("Comment found!")
-
-        elif WholeWord("egwene")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
-            egwene_quotes = [
-                "I am no novice. Yes, Aes Sedai. No, Aes Sedai. May I sweep another floor, Aes Sedai?",
-                ]
-
-            comment.reply(random.choice(egwene_quotes)) #Chooses a random quote
-
-            comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
-
-            with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
-                f.write(comment.id + "\n")
-
-
-            print("Comment found!")
-
+#gawyn
         elif WholeWord("gawyn")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
             gawyn_quotes = [
                 "Gawyn, you know me. You can't think I would help the Black Ajah. Gawyn, Elayne supports her and everything she's done. Your own sister, Gawyn. Egwene believe in her too, Gawyn. I swear it, Gawyn. Egwene believes.",
@@ -123,7 +123,24 @@ def run_bot(r, comments_replied_to, WholeWord):
 
 
             print("Comment found!")
+  #egwene          
+        elif WholeWord("egwene")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+            egwene_quotes = [
+                "I am no novice. Yes, Aes Sedai. No, Aes Sedai. May I sweep another floor, Aes Sedai?",
+                "A white flame and other things.",
+                "Gawyn kneeling at Egwene's feet with his head bowed, and Gawyn breaking Egwene's neck, first one then the other, as if either could be the future. She had never seen that fluttering back and forth, as though not even the viewing could tell which would be the true future." #Worse, she had a feeling near to certainty that it was what she had done this day that had turned Gawyn toward those two possibilities."
+                ]
 
+            comment.reply(random.choice(egwene_quotes)) #Chooses a random quote
+
+            comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
+
+            with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
+                f.write(comment.id + "\n")
+
+
+            print("Comment found!")
+   #aviendha        
         elif WholeWord("aviendha")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
             aviendha_quotes = [
                 "I don’t know what anybody’s toes have to do with anything, or feet either, but I’m not going anywhere until you talk to them, Rand!",
@@ -131,6 +148,36 @@ def run_bot(r, comments_replied_to, WholeWord):
                 ]
 
             comment.reply(random.choice(aviendha_quotes)) #Chooses a random quote
+
+            comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
+
+            with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
+                f.write(comment.id + "\n")
+
+
+            print("Comment found!")
+  #elayne
+        elif WholeWord("elayne")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+            elayne_quotes = [
+                "She will have to share her husband with two other women and she will be a queen. A severed hand, not hers."
+                ]
+
+            comment.reply(random.choice(elayne_quotes)) #Chooses a random quote
+
+            comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
+
+            with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
+                f.write(comment.id + "\n")
+
+
+            print("Comment found!")
+#nynaeve
+        elif WholeWord("nynaeve")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+            nynaeve_quotes = [
+                "She's part of it, right along with the rest of you...The sparks, Rand. She met Moiraine coming in, and there were sparks, with just the two of them. Yesterday I couldn't see sparks without at least three or four of you together, but today it's all sharper, and more furious. You're all in more danger today than yesterday. Since she came."
+                ]
+
+            comment.reply(random.choice(nynaeve_quotes)) #Chooses a random quote
 
             comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
 
