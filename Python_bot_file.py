@@ -254,6 +254,22 @@ def run_bot(r, comments_replied_to, WholeWord):
 
 
             print("Comment found!")
+            
+#Herid Fel
+        elif (WholeWord("herid")(comment.body) or WholeWord("fel")(comment.body)) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+            fel_quotes = [
+                "***Too pretty for Master Fel***"
+                ]
+
+            comment.reply(random.choice(fel_quotes)) #Chooses a random quote
+
+            comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
+
+            with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
+                f.write(comment.id + "\n")
+
+
+            print("Comment found!")
 
         else:
             for key in keyword:
