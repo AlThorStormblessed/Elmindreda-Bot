@@ -1,4 +1,4 @@
-#!/usr/bin/python
+n#!/usr/bin/python
 
 import praw
 from config import *
@@ -24,7 +24,7 @@ def run_bot(r, comments_replied_to, WholeWord):
     keyword = ["min", "vision", "foretelling", "viewing", "elmindreda", "farshaw", r.user.me(), "viewings", "visions"]
 
 
-    for comment in r.subreddit('Elmindreda_bot').comments(limit = 25):
+    for comment in r.subreddit('WetlanderHumor').comments(limit = 25):
 #rand
         if WholeWord("rand")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
             rand_quotes = [
@@ -91,7 +91,7 @@ def run_bot(r, comments_replied_to, WholeWord):
             print("Comment found!")
             
 #special case of all 3 boys being mentioned at once.
-         elif WholeWord("rand")(comment.body) and WholeWord("perrin")(comment.body) and WholeWord("mat")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+        elif WholeWord("rand")(comment.body) and WholeWord("perrin")(comment.body) and WholeWord("mat")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
             three_amigos_quotes = [
                 "Sparks swirling around you, thousands of them, and a big shadow, darker than midnight. The sparks are trying to fill the shadow, and the shadow is trying to swallow the sparks. You are all tied together in something dangerous."]
 
@@ -106,7 +106,7 @@ def run_bot(r, comments_replied_to, WholeWord):
             print("Comment found!")
 
 #special case of Rand and Perrin mentioned at once.
-         elif WholeWord("rand")(comment.body) and WholeWord("perrin")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+        elif WholeWord("rand")(comment.body) and WholeWord("perrin")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
             wolfAndDragon_quotes = [
                 "When you two were together, I saw those fireflies and the darkness stronger than ever... But with the two of you in the same room, the fireflies were holding their own instead of being eaten faster than they can swarm, the way they do when you're alone. And there's something else I saw when you two were together. Twice he's going to have to be there, or you... If he's not, something bad will happen to you. Very bad. It will happen if he is not there, but nothing I saw said it won't because he is. It will be very bad, Rand."
             ]
@@ -172,7 +172,7 @@ def run_bot(r, comments_replied_to, WholeWord):
             print("Comment found!")
             
  #special case of all 3 rand-y ones being mentioned at once. (Min, Elayne, Aviendha) Min is represented by 'min' as well as 'you' (since the bot is Min)
-         elif WholeWord("you")(comment.body) and WholeWord("elayne")(comment.body) and WholeWord("aviendha")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me() or WholeWord("min")(comment.body) and WholeWord("elayne")(comment.body) and WholeWord("aviendha")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
+        elif WholeWord("you")(comment.body) and WholeWord("elayne")(comment.body) and WholeWord("aviendha")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me() or WholeWord("min")(comment.body) and WholeWord("elayne")(comment.body) and WholeWord("aviendha")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
             three_randyones_quotes = [
                 "Two. Two others. And....And I'm one.",
                 "Three women before a pyre."
