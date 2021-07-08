@@ -87,8 +87,8 @@ def run_bot(r, comments_replied_to, WholeWord):
 
         #Boink
             elif WholeWord("rand")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me() or WholeWord("boink")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
-                rand_num = random.randint(1, 12) #One-in-twelve chance of replying on eligible comment
-                if rand_num == 4 and len(comment.body) < 50: #Only for comments of small sizes
+
+                if len(comment.body) < 50: #Only for comments of small sizes
                     comment.reply("*Boink*")
                     comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
 
@@ -201,20 +201,22 @@ def run_bot(r, comments_replied_to, WholeWord):
                 print("Comment found!")
       #elayne
             elif WholeWord("elayne")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
-                elayne_quotes = [
-                    "You will have to share your husband with two other women and you will be a queen. A severed hand, not yours.",
-                    "Above your head floats a red hot iron and an axe."
-                    ]
+                rand_num = random.randint(1, 5) #One-in-five chance of replying on eligible comment
+                if rand_num == 2:
+                    elayne_quotes = [
+                        "You will have to share your husband with two other women and you will be a queen. A severed hand, not yours.",
+                        "Above your head floats a red hot iron and an axe."
+                        ]
 
-                comment.reply(random.choice(elayne_quotes)) #Chooses a random quote
+                    comment.reply(random.choice(elayne_quotes)) #Chooses a random quote
 
-                comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
+                    comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
 
-                with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
-                    f.write(comment.id + "\n")
+                    with open("Comments_replied_to.txt", "a", encoding='cp1252') as f:
+                        f.write(comment.id + "\n")
 
 
-                print("Comment found!")
+                    print("Comment found!")
 
     #Herid Fel
             elif (WholeWord("herid")(comment.body) or WholeWord("fel")(comment.body)) and comment.id not in comments_replied_to and not comment.author == r.user.me():
