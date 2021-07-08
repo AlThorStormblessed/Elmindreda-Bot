@@ -26,13 +26,15 @@ def run_bot(r, comments_replied_to, WholeWord):
 
     for comment in r.subreddit('WetlanderHumor').comments(limit = 25):
         comment.refresh()
-        rand_num = random.randint(1, 5)
+        
+        #Randomness to make sure Min doesn't reply to every comment with these words
+        rand_num = random.randint(1, 5) 
         boink_num = random.randint(1, 8)
         elayne_num = (1, 5)
 
         reply_auth = [red.author for red in comment.replies]
         if not("LewsTherinTelamonBot" in reply_auth and "Braid-tugger-bot" in reply_auth):
-#special case of Rand and Perrin mentioned at once.
+    #special case of Rand and Perrin mentioned at once.
             if WholeWord("rand")(comment.body) and WholeWord("perrin")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
                 wolfAndDragon_quotes = [
                     "When you two were together, I saw those fireflies and the darkness stronger than ever...",
@@ -88,7 +90,7 @@ def run_bot(r, comments_replied_to, WholeWord):
 
                 print("Comment found!")
 
-        #Boink
+    #Boink
             elif rand_num == 2 and WholeWord("rand")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me() and len(comment.body) < 50:
                 comment.reply("*Boink*")
                 comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
@@ -98,7 +100,8 @@ def run_bot(r, comments_replied_to, WholeWord):
 
 
                 print("Comment found!")
-
+    
+    #Boink-2
             elif rand_num == 2 and boink_num == 4 and WholeWord("rand")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
                 comment.reply("*Boink*")
                 comments_replied_to.append(comment.id)  #Simply adds the comment.id replied to to a list so the bot doesn't reply to it again
@@ -109,7 +112,7 @@ def run_bot(r, comments_replied_to, WholeWord):
 
                 print("Comment found!")
 
-     #perrin
+    #perrin
             elif WholeWord("perrin")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
                 perrin_quotes = [
                     "If you meet a woman – the most beautiful woman you’ve ever seen – run!",
@@ -134,7 +137,8 @@ def run_bot(r, comments_replied_to, WholeWord):
             elif WholeWord("mat")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
                 mat_quotes = [
                     "A red eagle, an eye on a balance scale, a dagger with a ruby, a horn, and a laughing face.",
-                    "Men are strange. I think it has something to do with the hair on their chins.",
+                    "Men are strange. I think it has something to do with the hair on their chins."
+                    "***Flourishes own knives***"
                     ]
 
                 comment.reply(random.choice(mat_quotes)) #Chooses a random quote
@@ -151,7 +155,8 @@ def run_bot(r, comments_replied_to, WholeWord):
             elif WholeWord("thom")(comment.body) and comment.id not in comments_replied_to and not comment.author == r.user.me():
                 thom_quotes = [
                     "Go juggle something, Thom",
-                    "Men are strange. I think it has something to do with the hair on their chins."
+                    "Men are strange. I think it has something to do with the hair on their chins.",
+                    "***Flourishes own knives***"
                     ]
 
                 comment.reply(random.choice(thom_quotes)) #Chooses a random quote
